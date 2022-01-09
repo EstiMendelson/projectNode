@@ -9,7 +9,9 @@ const router=require('./routs/api')
 app.use(cors());  
 app.use("/",bodyParser.json())
 app.use('/',router) 
-
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
 const connectionParams = {
     useNewUrlParser: true,
    // useCreateIndex: true,
