@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const itemsSchema=mongoose.Schema({
+const itemSchema=mongoose.Schema({
     
     categoryId:{
         type:Number
@@ -17,9 +17,6 @@ const itemsSchema=mongoose.Schema({
     email:{
         type:String,
     },
-   
-       
-
 })
 
-module.exports=mongoose.model('items',itemsSchema)
+module.exports=mongoose.model('item',itemSchema)

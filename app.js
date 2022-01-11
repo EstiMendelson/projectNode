@@ -1,20 +1,18 @@
 const express = require('express')
 const bodyParser=require('body-parser')
 const mongoose=require('mongoose')
-var cors = require('cors');
+const cors = require('cors');
 const dotenv=require('dotenv')
 dotenv.config()
 const app=express()
-const router=require('./routs/api')
+const category=require('./routs/category')
+const item=require('./routs/item')
 app.use(cors());  
 app.use("/",bodyParser.json())
-app.use('/',router) 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
+app.use('/category',category) 
+app.use('/item',item)
 const connectionParams = {
     useNewUrlParser: true,
-   // useCreateIndex: true,
     useUnifiedTopology: true
 }
 mongoose.set('debug', { shell: true })
@@ -27,8 +25,5 @@ mongoose.connect(process.env.DB_CONNECT, connectionParams)
     })
    
 const port = 5000
-//app.get('/', (req, res) => {
-//  res.send('Hello World!')
-// });+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
